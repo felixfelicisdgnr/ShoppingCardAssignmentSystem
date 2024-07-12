@@ -14,21 +14,24 @@ import javax.inject.Inject
 class AddProductViewModel @Inject constructor(
     private val addProductUseCase: AddProductUseCase,
     private val getProductUseCase: GetProductUseCase
-) : ViewModel(){
+) : ViewModel() {
 
-    private val _product = MutableLiveData<ProductEntity?>()
-    val product: MutableLiveData<ProductEntity?> = _product
+    private val _products = MutableLiveData<List<ProductEntity>>()
+    val products: MutableLiveData<List<ProductEntity>> = _products
 
-    fun addProduct(product: ProductEntity){
+    fun addProduct(product: ProductEntity) {
         viewModelScope.launch {
-            addProductUseCase(product)
-            getProduct()
+            val currentProducts = getProductUseCase()
+            val newId = (currentProducts.maxOfOrNull { it.id } ?: 0) + 1
+            val newProduct = product.copy(id = newId)
+            addProductUseCase(newProduct)
+            getProducts()
         }
     }
 
-    fun getProduct(){
+    fun getProducts() {
         viewModelScope.launch {
-            _product.value = getProductUseCase()
+            _products.value = getProductUseCase() ?: emptyList()
         }
     }
 }

@@ -23,18 +23,15 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         initObservers()
         setUpOnClickListeners()
-        viewModel.getProduct()
-
+        viewModel.getProducts()
     }
 
     private fun initObservers() {
         binding.rvSubmitProducts.adapter = submitProductAdapter
-        viewModel.product.observe(viewLifecycleOwner) {
-            val list = it?.let { listOf(it) } ?: emptyList()
-            submitProductAdapter.submitList(list)
+        viewModel.products.observe(viewLifecycleOwner) {
+            submitProductAdapter.submitList(it)
         }
     }
 
@@ -45,24 +42,21 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
     }
 
     private fun submitProduct() {
-
         val productName = binding.etProductName.text.toString()
         val productPrice = binding.etProductPrice.text.toString()
 
-
         if (productName.isEmpty()) {
-            Toast.makeText(requireContext(), "Please, enter a product name", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(requireContext(), "Please, enter a product name", Toast.LENGTH_SHORT).show()
             return
         }
 
         if (productPrice.isEmpty()) {
-            Toast.makeText(requireContext(), "Please, enter a product price", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(requireContext(), "Please, enter a product price", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (productPrice < 0.01.toString() || productPrice > 99.99.toString()) {
+        val price = productPrice.toDoubleOrNull()
+        if (price == null || price < 0.01 || price > 99.99) {
             Toast.makeText(
                 requireContext(),
                 "Please, price must be between 0.01 and 99.99",
@@ -71,8 +65,8 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
             return
         }
 
-        val product = ProductEntity(1, productName, productPrice.toDouble())
-
+        val product = ProductEntity(0, productName, price)
         viewModel.addProduct(product)
+
     }
 }

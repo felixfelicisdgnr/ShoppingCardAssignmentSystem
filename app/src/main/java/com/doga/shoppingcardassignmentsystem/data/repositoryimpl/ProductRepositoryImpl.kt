@@ -23,6 +23,6 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun searchProductsByName(productName: String): List<ProductEntity> =
         productLocalDataSource.searchProductsByName(productName)
 
-    override suspend fun getAllProducts(): ProductEntity =
+    override suspend fun getAllProducts(): List<ProductEntity> =
         productLocalDataSource.getAllProducts()
 }

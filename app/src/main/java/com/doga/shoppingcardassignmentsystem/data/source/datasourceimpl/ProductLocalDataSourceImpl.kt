@@ -30,7 +30,7 @@ class ProductLocalDataSourceImpl @Inject constructor(
         productDao.searchProductsByName(productName)
     }
 
-    override suspend fun getAllProducts(): ProductEntity = withContext(ioDispatcher) {
+    override suspend fun getAllProducts(): List<ProductEntity> = withContext(ioDispatcher) {
         productDao.getAllProducts()
     }
 }

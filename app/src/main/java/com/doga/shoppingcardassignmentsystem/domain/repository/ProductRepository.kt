@@ -14,5 +14,5 @@ interface ProductRepository {
 
     suspend fun searchProductsByName(productName: String): List<ProductEntity>
 
-    suspend fun getAllProducts(): ProductEntity
+    suspend fun getAllProducts(): List<ProductEntity>
 }
