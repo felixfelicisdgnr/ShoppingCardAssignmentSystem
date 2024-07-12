@@ -9,7 +9,7 @@ import com.doga.shoppingcardassignmentsystem.data.model.entity.ProductEntity
 @Dao
 interface ProductDao {
     @Insert
-    suspend fun insertProduct(product: ProductEntity)
+    suspend fun addProduct(product: ProductEntity)
 
     @Update
     suspend fun updateProduct(product: ProductEntity)
@@ -24,5 +24,6 @@ interface ProductDao {
     suspend fun searchProductsByName(productName: String): List<ProductEntity>
 
     @Query("SELECT * FROM products")
-    suspend fun getAllProducts(): List<ProductEntity>
+    suspend fun getAllProducts(): ProductEntity
+
 }

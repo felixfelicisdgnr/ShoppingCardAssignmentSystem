@@ -4,7 +4,7 @@ import com.doga.shoppingcardassignmentsystem.data.model.entity.ProductEntity
 
 interface ProductRepository {
 
-    suspend fun insertProduct(product: ProductEntity)
+    suspend fun addProduct(product: ProductEntity)
 
     suspend fun updateProduct(product: ProductEntity)
 
@@ -14,5 +14,5 @@ interface ProductRepository {
 
     suspend fun searchProductsByName(productName: String): List<ProductEntity>
 
-    suspend fun getAllProducts(): List<ProductEntity>
+    suspend fun getAllProducts(): ProductEntity
 }

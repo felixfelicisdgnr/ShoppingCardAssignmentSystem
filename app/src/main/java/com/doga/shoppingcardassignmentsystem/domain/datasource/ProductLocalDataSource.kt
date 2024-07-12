@@ -1,10 +1,11 @@
 package com.doga.shoppingcardassignmentsystem.domain.datasource
 
 import com.doga.shoppingcardassignmentsystem.data.model.entity.ProductEntity
+import com.doga.shoppingcardassignmentsystem.domain.repository.ProductRepository
 
 interface ProductLocalDataSource {
 
-    suspend fun insertProduct(product: ProductEntity)
+    suspend fun addProduct(product: ProductEntity)
 
     suspend fun updateProduct(product: ProductEntity)
 
@@ -14,5 +15,5 @@ interface ProductLocalDataSource {
 
     suspend fun searchProductsByName(productName: String): List<ProductEntity>
 
-    suspend fun getAllProducts(): List<ProductEntity>
+    suspend fun getAllProducts(): ProductEntity
 }

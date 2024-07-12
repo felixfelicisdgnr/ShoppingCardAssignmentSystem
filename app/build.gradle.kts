@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 
 }
 
@@ -41,6 +44,10 @@ android {
         }
     }
 
+    kapt {
+        correctErrorTypes = true
+    }
+
     dependencies {
 
         implementation(libs.androidx.core.ktx)
@@ -52,35 +59,25 @@ android {
         androidTestImplementation(libs.androidx.junit)
         androidTestImplementation(libs.androidx.espresso.core)
 
+        implementation(libs.google.material)
+
         // Navigation
         implementation(libs.androidx.navigation.fragment.ktx)
         implementation(libs.androidx.navigation.ui.ktx)
-
-        //room
-        implementation(libs.androidx.room.runtime)
-        annotationProcessor(libs.androidx.room.compiler)
-        implementation(libs.androidx.room.ktx)
 
         // Coroutines
         implementation(libs.kotlinx.coroutines.android)
         implementation(libs.kotlinx.coroutines.play.services)
 
-        //hilt
+
+        // Room
+        implementation(libs.androidx.room.runtime)
+        ksp(libs.androidx.room.compiler)
+        implementation(libs.androidx.room.ktx)
+
+        // Hilt
         implementation(libs.hilt.android)
-
-        implementation(libs.androidx.core.ktx)
-        implementation(libs.androidx.appcompat)
-        implementation(libs.material)
-        testImplementation(libs.junit)
-        androidTestImplementation(libs.androidx.junit)
-        androidTestImplementation(libs.androidx.espresso.core)
-
-
-        implementation(libs.google.material)
-
-
+        kapt(libs.hilt.android.compiler)
     }
 }
-dependencies {
-    implementation(libs.google.material)
-}
+

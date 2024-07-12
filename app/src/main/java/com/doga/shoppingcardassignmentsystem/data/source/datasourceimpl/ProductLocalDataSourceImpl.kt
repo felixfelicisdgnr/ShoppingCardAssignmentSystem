@@ -11,8 +11,8 @@ class ProductLocalDataSourceImpl @Inject constructor(
     private val productDao: ProductDao,
     private val ioDispatcher: CoroutineContext
 ) : ProductLocalDataSource {
-    override suspend fun insertProduct(product: ProductEntity) = withContext(ioDispatcher) {
-        productDao.insertProduct(product)
+    override suspend fun addProduct(product: ProductEntity) = withContext(ioDispatcher) {
+        productDao.addProduct(product)
     }
 
     override suspend fun updateProduct(product: ProductEntity) = withContext(ioDispatcher) {
@@ -30,7 +30,7 @@ class ProductLocalDataSourceImpl @Inject constructor(
         productDao.searchProductsByName(productName)
     }
 
-    override suspend fun getAllProducts(): List<ProductEntity> = withContext(ioDispatcher) {
+    override suspend fun getAllProducts(): ProductEntity = withContext(ioDispatcher) {
         productDao.getAllProducts()
     }
 }

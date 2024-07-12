@@ -8,8 +8,8 @@ import javax.inject.Inject
 class ProductRepositoryImpl @Inject constructor(
     private val productLocalDataSource: ProductLocalDataSource
 ) : ProductRepository {
-    override suspend fun insertProduct(product: ProductEntity) =
-        productLocalDataSource.insertProduct(product)
+    override suspend fun addProduct(product: ProductEntity) =
+        productLocalDataSource.addProduct(product)
 
     override suspend fun updateProduct(product: ProductEntity) =
         productLocalDataSource.updateProduct(product)
@@ -23,6 +23,6 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun searchProductsByName(productName: String): List<ProductEntity> =
         productLocalDataSource.searchProductsByName(productName)
 
-    override suspend fun getAllProducts(): List<ProductEntity> =
+    override suspend fun getAllProducts(): ProductEntity =
         productLocalDataSource.getAllProducts()
 }

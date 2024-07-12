@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddProductFragment">
+    tools:context=".ui.addproduct.AddProductFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitleAddProduct"
@@ -44,10 +44,10 @@
             android:layout_marginTop="4sp"
             android:fontFamily="@font/myfont"
             android:hint="@string/product_name"
-            android:inputType="numberDecimal"
-            android:maxLength="2"
+            android:inputType="text"
+            android:maxLength="20"
             android:padding="4sp"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,9 +72,9 @@
             android:fontFamily="@font/myfont"
             android:hint="@string/product_price"
             android:inputType="numberDecimal"
-            android:maxLength="2"
+            android:maxLength="5"
             android:padding="4sp"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,5 +93,17 @@
         app:layout_constraintEnd_toEndOf="@id/tvTitleAddProduct"
         app:layout_constraintStart_toStartOf="@id/tvTitleAddProduct"
         app:layout_constraintTop_toBottomOf="@id/tilProductPrice" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSubmitProducts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/btnSubmitProduct"
+        app:layout_constraintStart_toStartOf="@id/btnSubmitProduct"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmitProduct"
+        app:spanCount="2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
