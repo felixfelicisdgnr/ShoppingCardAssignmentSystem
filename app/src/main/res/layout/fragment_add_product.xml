@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addproduct.AddProductFragment">
+    tools:context=".presentation.addproduct.AddProductFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitleAddProduct"

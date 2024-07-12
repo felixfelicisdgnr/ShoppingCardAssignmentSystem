@@ -1,4 +1,4 @@
-package com.doga.shoppingcardassignmentsystem.ui.addproduct
+package com.doga.shoppingcardassignmentsystem.presentation.addproduct
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

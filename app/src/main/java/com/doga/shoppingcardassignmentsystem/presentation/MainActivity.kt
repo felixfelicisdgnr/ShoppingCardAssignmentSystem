@@ -1,4 +1,4 @@
-package com.doga.shoppingcardassignmentsystem.ui
+package com.doga.shoppingcardassignmentsystem.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle

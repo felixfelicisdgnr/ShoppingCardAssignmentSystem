@@ -1,4 +1,4 @@
-package com.doga.shoppingcardassignmentsystem.ui.cardassignment
+package com.doga.shoppingcardassignmentsystem.presentation.cardassignment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

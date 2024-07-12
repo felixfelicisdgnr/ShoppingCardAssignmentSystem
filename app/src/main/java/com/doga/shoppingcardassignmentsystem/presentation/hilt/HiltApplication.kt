@@ -1,4 +1,4 @@
-package com.doga.shoppingcardassignmentsystem.di.hilt
+package com.doga.shoppingcardassignmentsystem.presentation.hilt
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
