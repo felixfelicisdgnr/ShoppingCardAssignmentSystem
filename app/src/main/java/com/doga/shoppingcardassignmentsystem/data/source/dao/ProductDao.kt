@@ -3,7 +3,6 @@ package com.doga.shoppingcardassignmentsystem.data.source.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
 import com.doga.shoppingcardassignmentsystem.data.model.entity.ProductEntity
 
 @Dao
@@ -11,8 +10,8 @@ interface ProductDao {
     @Insert
     suspend fun addProduct(product: ProductEntity)
 
-    @Update
-    suspend fun updateProduct(product: ProductEntity)
+    @Query("UPDATE products SET name = :name, price = :price WHERE id = :id")
+    suspend fun updateProduct(id: Int, name: String, price: Double)
 
     @Query("DELETE FROM products WHERE id = :productId")
     suspend fun deleteProduct(productId: Int)

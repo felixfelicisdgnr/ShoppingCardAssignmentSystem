@@ -2,6 +2,7 @@ package com.doga.shoppingcardassignmentsystem.presentation.editproduct
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.doga.shoppingcardassignmentsystem.R
@@ -14,7 +15,12 @@ class EditProductFragment : Fragment(R.layout.fragment_edit_product) {
 
     private val binding by viewBinding(FragmentEditProductBinding::bind)
 
-    private val editProductAdapter by lazy { EditProductAdapter(::onRemoveClick) }
+    private val editProductAdapter by lazy {
+        EditProductAdapter(
+            ::onRemoveClick,
+            ::onUpdateClick
+        )
+    }
 
     private val viewModel: EditProductViewModel by viewModels()
 
@@ -22,7 +28,26 @@ class EditProductFragment : Fragment(R.layout.fragment_edit_product) {
         super.onViewCreated(view, savedInstanceState)
 
         initObservers()
+        searchProduct("a")
 
+    }
+
+    private fun searchProduct(name: String) {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    viewModel.getAllProducts()
+                } else {
+                    viewModel.searchProductsByName(newText)
+                }
+                return false
+            }
+        })
     }
 
     private fun initObservers() {
@@ -35,6 +60,10 @@ class EditProductFragment : Fragment(R.layout.fragment_edit_product) {
 
     private fun onRemoveClick(productId: Int) {
         viewModel.removeProduct(productId)
+    }
+
+    private fun onUpdateClick(productId: Int, name: String, price: Double) {
+        viewModel.updateProduct(productId, name, price)
     }
 
     override fun onResume() {

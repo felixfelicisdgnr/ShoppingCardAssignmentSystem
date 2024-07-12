@@ -15,8 +15,8 @@ class ProductLocalDataSourceImpl @Inject constructor(
         productDao.addProduct(product)
     }
 
-    override suspend fun updateProduct(product: ProductEntity) = withContext(ioDispatcher) {
-        productDao.updateProduct(product)
+    override suspend fun updateProduct(id: Int, name: String, price: Double) = withContext(ioDispatcher) {
+        productDao.updateProduct(id, name, price)
     }
 
     override suspend fun deleteProduct(productId: Int) = withContext(ioDispatcher) {

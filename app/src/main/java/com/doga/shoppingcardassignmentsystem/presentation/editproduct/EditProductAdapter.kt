@@ -2,14 +2,17 @@ package com.doga.shoppingcardassignmentsystem.presentation.editproduct
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.doga.shoppingcardassignmentsystem.data.model.entity.ProductEntity
 import com.doga.shoppingcardassignmentsystem.databinding.ItemEditProductRvBinding
 
-class EditProductAdapter(var onRemoveClick: (Int) -> Unit) :
-    ListAdapter<ProductEntity, EditProductAdapter.EditProductViewHolder>(
+class EditProductAdapter(
+    var onRemoveClick: (Int) -> Unit,
+    var onUpdateClick: (Int, String, Double) -> Unit
+) : ListAdapter<ProductEntity, EditProductAdapter.EditProductViewHolder>(
         EditProductDiff()
     ) {
 
@@ -38,6 +41,21 @@ class EditProductAdapter(var onRemoveClick: (Int) -> Unit) :
 
                 btnRemove.setOnClickListener {
                     onRemoveClick(item.id)
+                }
+
+                btnSubmit.setOnClickListener {
+
+                    val price = tvProductPrice.text.toString().toDoubleOrNull()
+                    if (price == null || price < 0.01 || price > 99.99) {
+                        Toast.makeText(
+                            it.context,
+                            "Fiyat aralığı 0.01 ile 99.99 arasında olmalıdır.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        onUpdateClick(item.id, tvProductName.text.toString(), price)
+                    }
+
                 }
             }
         }

@@ -7,6 +7,7 @@ import javax.inject.Inject
 @ViewModelScoped
 class UpdateProductUseCase @Inject constructor(
     private val productRepository: ProductRepository
-){
-
+) {
+    suspend operator fun invoke(id: Int, name: String, price: Double) =
+        productRepository.updateProduct(id, name, price)
 }

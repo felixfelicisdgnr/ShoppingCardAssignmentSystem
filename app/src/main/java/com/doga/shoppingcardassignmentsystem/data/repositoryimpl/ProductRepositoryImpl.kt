@@ -11,8 +11,8 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun addProduct(product: ProductEntity) =
         productLocalDataSource.addProduct(product)
 
-    override suspend fun updateProduct(product: ProductEntity) =
-        productLocalDataSource.updateProduct(product)
+    override suspend fun updateProduct(id: Int, name: String, price: Double) =
+        productLocalDataSource.updateProduct(id, name, price)
 
     override suspend fun deleteProduct(productId: Int) =
         productLocalDataSource.deleteProduct(productId)

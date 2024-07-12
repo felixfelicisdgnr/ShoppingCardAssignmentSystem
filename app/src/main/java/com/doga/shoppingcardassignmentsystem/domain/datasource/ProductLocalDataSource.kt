@@ -6,7 +6,7 @@ interface ProductLocalDataSource {
 
     suspend fun addProduct(product: ProductEntity)
 
-    suspend fun updateProduct(product: ProductEntity)
+    suspend fun updateProduct(id: Int, name: String, price: Double)
 
     suspend fun deleteProduct(productId: Int)
 
