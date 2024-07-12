@@ -4,4 +4,8 @@
     <string name="add_product">Add Product</string>
     <string name="edit_product">Edit Product</string>
     <string name="card_assignment">Card Assignment</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Product Price</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 </resources>

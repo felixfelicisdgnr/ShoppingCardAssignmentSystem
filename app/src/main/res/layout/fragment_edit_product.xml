@@ -1,21 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.EditProductFragment">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etProductName"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_product"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
+        app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Product Name" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilProductNameForEditFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="3sp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/searchView"
+        app:layout_constraintTop_toBottomOf="@id/searchView">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etProductNameForEditFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4sp"
+            android:fontFamily="@font/myfont"
+            android:hint="@string/product_name"
+            android:inputType="numberDecimal"
+            android:maxLength="2"
+            android:padding="4sp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilProductPriceForEditFragment"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="3sp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/searchView"
+        app:layout_constraintTop_toBottomOf="@id/tilProductNameForEditFragment">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etProductPriceForEditFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4sp"
+            android:fontFamily="@font/myfont"
+            android:hint="@string/product_price"
+            android:inputType="numberDecimal"
+            android:maxLength="2"
+            android:padding="4sp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnUpdateProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#BCF27D"
+        android:text="@string/update"
+        app:layout_constraintEnd_toStartOf="@id/btnDeleteProduct"
+        app:layout_constraintStart_toStartOf="@+id/tilProductPriceForEditFragment"
+        app:layout_constraintTop_toBottomOf="@+id/tilProductPriceForEditFragment" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDeleteProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#BCF27D"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="@+id/tilProductPriceForEditFragment"
+        app:layout_constraintStart_toEndOf="@+id/btnUpdateProduct"
+        app:layout_constraintTop_toBottomOf="@+id/tilProductPriceForEditFragment" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/searchView"
+        app:layout_constraintTop_toBottomOf="@+id/btnUpdateProduct"
+        app:spanCount="2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,16 +7,91 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddProductFragment">
 
-    <EditText
-        android:id="@+id/etProductName"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleAddProduct"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/add_product"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/add_product"
+        android:textColor="#55BC59"
+        android:textColorHint="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        android:textAlignment="center"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilProductName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="3sp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/black"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleAddProduct"
+        app:layout_constraintStart_toStartOf="@id/tvTitleAddProduct"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleAddProduct">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etProductName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4sp"
+            android:fontFamily="@font/myfont"
+            android:hint="@string/product_name"
+            android:inputType="numberDecimal"
+            android:maxLength="2"
+            android:padding="4sp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilProductPrice"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="3sp"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/black"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleAddProduct"
+        app:layout_constraintStart_toStartOf="@id/tvTitleAddProduct"
+        app:layout_constraintTop_toBottomOf="@id/tilProductName">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4sp"
+            android:fontFamily="@font/myfont"
+            android:hint="@string/product_price"
+            android:inputType="numberDecimal"
+            android:maxLength="2"
+            android:padding="4sp"
+            android:textAlignment="center"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSubmitProduct"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#BCF27D"
+        android:fontFamily="@font/myfont"
+        android:padding="5sp"
+        android:text="@string/add_product"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/tvTitleAddProduct"
+        app:layout_constraintStart_toStartOf="@id/tvTitleAddProduct"
+        app:layout_constraintTop_toBottomOf="@id/tilProductPrice" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
