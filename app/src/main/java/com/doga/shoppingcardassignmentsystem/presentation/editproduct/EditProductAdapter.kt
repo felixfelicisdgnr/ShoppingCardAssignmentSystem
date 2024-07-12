@@ -1,4 +1,4 @@
-package com.doga.shoppingcardassignmentsystem.presentation.addproduct
+package com.doga.shoppingcardassignmentsystem.presentation.editproduct
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,40 +6,44 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.doga.shoppingcardassignmentsystem.data.model.entity.ProductEntity
-import com.doga.shoppingcardassignmentsystem.databinding.ItemProductRvBinding
+import com.doga.shoppingcardassignmentsystem.databinding.ItemEditProductRvBinding
 
-class SubmitProductAdapter:
-    ListAdapter<ProductEntity, SubmitProductAdapter.SubmitProductViewHolder>(
-        ProductDiff()
+class EditProductAdapter(var onRemoveClick: (Int) -> Unit) :
+    ListAdapter<ProductEntity, EditProductAdapter.EditProductViewHolder>(
+        EditProductDiff()
     ) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SubmitProductViewHolder {
+    ): EditProductViewHolder {
         val binding =
-            ItemProductRvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SubmitProductViewHolder(binding)
+            ItemEditProductRvBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return EditProductViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: SubmitProductViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EditProductViewHolder, position: Int) {
         holder.bind(currentList[position])
     }
 
-    inner class SubmitProductViewHolder(
-        private val binding: ItemProductRvBinding,
+    inner class EditProductViewHolder(
+        private val binding: ItemEditProductRvBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ProductEntity) {
             with(binding) {
-                tvProductName.text = String.format("Product Name: %s", item.name)
-                tvProductPriceName.text = String.format("Product Price: %s", item.price)
-                tvProductId.text = String.format("Product ID : %s", item.id)
 
+                tvProductId.text = String.format("Product ID : %s", item.id)
+                tvProductName.setText(item.name)
+                tvProductPrice.setText(item.price.toString())
+
+                btnRemove.setOnClickListener {
+                    onRemoveClick(item.id)
+                }
             }
         }
     }
 
-    class ProductDiff : DiffUtil.ItemCallback<ProductEntity>() {
+    class EditProductDiff : DiffUtil.ItemCallback<ProductEntity>() {
         override fun areItemsTheSame(
             oldItem: ProductEntity, newItem: ProductEntity
         ): Boolean {

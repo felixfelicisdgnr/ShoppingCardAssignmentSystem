@@ -9,4 +9,6 @@
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="product_id">Product ID</string>
+    <string name="submit">Submıt</string>
+    <string name="remove">Remove</string>
 </resources>
