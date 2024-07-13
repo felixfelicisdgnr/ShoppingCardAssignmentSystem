@@ -19,7 +19,7 @@ interface ProductDao {
     @Query("SELECT * FROM products WHERE id = :productId")
     suspend fun getProductById(productId: Int): ProductEntity?
 
-    @Query("SELECT * FROM products WHERE name LIKE :productName")
+    @Query("SELECT * FROM products WHERE name LIKE '%' || :productName || '%'")
     suspend fun searchProductsByName(productName: String): List<ProductEntity>
 
     @Query("SELECT * FROM products")

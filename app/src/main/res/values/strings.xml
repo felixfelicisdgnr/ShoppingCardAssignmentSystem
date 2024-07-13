@@ -11,4 +11,5 @@
     <string name="product_id">Product ID</string>
     <string name="submit">Submıt</string>
     <string name="remove">Remove</string>
+    <string name="credit_card_limit">Credit Card Limit:</string>
 </resources>

@@ -28,11 +28,10 @@ class EditProductFragment : Fragment(R.layout.fragment_edit_product) {
         super.onViewCreated(view, savedInstanceState)
 
         initObservers()
-        searchProduct("a")
-
+        searchProduct()
     }
 
-    private fun searchProduct(name: String) {
+    private fun searchProduct() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
