@@ -22,10 +22,50 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAllProducts"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/tvCreditCardLimit"
         app:layout_constraintStart_toStartOf="@id/tvCreditCardLimit"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreditCardLimit"
         app:spanCount="1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/myfont"
+        android:text="@string/send"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="@id/rvAllProducts"
+        app:layout_constraintStart_toStartOf="@id/rvAllProducts"
+        app:layout_constraintTop_toBottomOf="@id/rvAllProducts" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etIpAddressName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/ip_address"
+        android:textColor="@color/black"
+        android:fontFamily="@font/myfont"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="@id/tvCreditCardLimit"
+        app:layout_constraintStart_toStartOf="@id/tvCreditCardLimit"
+        app:layout_constraintTop_toBottomOf="@id/btnSend" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/btnPortName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/myfont"
+        android:hint="@string/port_name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textAlignment="textStart"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="@id/etIpAddressName"
+        app:layout_constraintStart_toStartOf="@id/etIpAddressName"
+        app:layout_constraintTop_toBottomOf="@id/etIpAddressName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

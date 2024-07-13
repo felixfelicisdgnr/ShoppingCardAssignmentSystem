@@ -12,4 +12,7 @@
     <string name="submit">Submıt</string>
     <string name="remove">Remove</string>
     <string name="credit_card_limit">Credit Card Limit:</string>
+    <string name="ip_address">IP Address</string>
+    <string name="send">SEND</string>
+    <string name="port_name">Port Name</string>
 </resources>
